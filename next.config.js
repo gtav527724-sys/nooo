@@ -2,19 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: '**' }
-    ]
+    remotePatterns: [{ protocol: 'https', hostname: '**' }],
   },
-  experimental: {
-    serverComponentsExternalPackages: ['@distube/ytdl-core']
-  },
-  eslint: {
-    ignoreDuringBuilds: true
-  },
+  serverExternalPackages: ['@distube/ytdl-core'],
   typescript: {
-    ignoreBuildErrors: true
-  }
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;
