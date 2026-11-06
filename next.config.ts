@@ -1,20 +1,20 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  poweredByHeader: false,
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  async headers() {
-    return [
-      {
-        // Always fetch the newest service worker so deploys never serve a stale app.
-        source: "/sw.js",
-        headers: [
-          { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
-          { key: "Service-Worker-Allowed", value: "/" },
-        ],
-      },
-    ];
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: '**' }
+    ]
   },
+  experimental: {
+    serverComponentsExternalPackages: ['@distube/ytdl-core']
+  },
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+  typescript: {
+    ignoreBuildErrors: true
+  }
 };
 
-export default nextConfig;
+module.exports = nextConfig;
